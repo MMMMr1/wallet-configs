@@ -18,8 +18,7 @@ spring:
           filters:
             - name: CircuitBreaker
               args:
-                name: userServiceCommonCircuitBreaker
-                methods: GET,PUT,POST
+                name: userServiceCommonCircuitBreaker 
                 fallbackUri: forward:/fallback/userServiceCommonFallback
 
 api-gateway-service:
