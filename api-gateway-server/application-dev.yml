@@ -16,7 +16,6 @@ spring:
           predicates:
             - Path=/api/v1/users/{segment},/api/v1/users
           filters:
-            - AddRequestHeader=Is-Proxy-Request, true
             - name: CircuitBreaker
               args:
                 name: userServiceCommonCircuitBreaker
