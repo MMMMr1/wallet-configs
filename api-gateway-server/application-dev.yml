@@ -1,1 +1,51 @@
+spring:
+  cloud:
+    gateway:
+      metrics:
+        enabled: true
+      actuator:
+        verbose:
+          enabled: true
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/v1/users/{segment},/api/v1/users
+          filters:
+            - AddRequestHeader=Is-Proxy-Request, true
+            - name: CircuitBreaker
+              args:
+                name: userServiceCommonCircuitBreaker
+                fallbackUri: forward:/fallback/userServiceCommonFallback
 
+api-gateway-service:
+  timeout-ms: 6000
+  failure-rate-threshold: 50
+  slow-call-rate-threshold: 50
+  slow-call-duration-threshold: 50
+  permitted-num-of-calls-in-half-open-state: 10
+  sliding-window-size: 10
+  min-number-of-calls: 10
+  wait-duration-in-open-state: 20000
+
+management:
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://discovery-server:8761/eureka
