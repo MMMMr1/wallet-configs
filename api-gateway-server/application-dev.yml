@@ -19,17 +19,19 @@ spring:
             - name: CircuitBreaker
               args:
                 name: userServiceCommonCircuitBreaker
+                methods: GET,PUT,POST
                 fallbackUri: forward:/fallback/userServiceCommonFallback
 
 api-gateway-service:
-  timeout-ms: 6000
+  timeout-ms: 4000
   failure-rate-threshold: 50
   slow-call-rate-threshold: 50
   slow-call-duration-threshold: 50
-  permitted-num-of-calls-in-half-open-state: 10
+  permitted-num-of-calls-in-half-open-state: 5
   sliding-window-size: 10
   min-number-of-calls: 10
-  wait-duration-in-open-state: 20000
+  wait-duration-in-open-state: 10000
+  registerHealthIndicator: true
 
 management:
   endpoint:
