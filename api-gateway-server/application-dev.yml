@@ -30,8 +30,7 @@ api-gateway-service:
   permitted-num-of-calls-in-half-open-state: 5
   sliding-window-size: 10
   min-number-of-calls: 10
-  wait-duration-in-open-state: 10000
-  registerHealthIndicator: true
+  wait-duration-in-open-state: 10000 
 
 management:
   endpoint:
