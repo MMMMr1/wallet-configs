@@ -1,0 +1,57 @@
+mail:
+  host: smtp.mail.ru
+  port: 465
+  username: ${MAIL_USER}
+  password: ${MAIL_PASSWORD}
+  properties:
+    mail:
+      smtps:
+        starttls:
+          enable: true
+          required: true
+        auth: true
+        ssl: trust:smtp.mail.ru
+  protocol: smtps
+
+spring:
+  application:
+    name: mail-service
+  kafka:
+    bootstrap-servers: broker:29092
+    consumer:
+      group-id: client-mail-service-group
+      keyDeserializer: "org.apache.kafka.common.serialization.StringDeserializer"
+      valueDeserializer: "io.confluent.kafka.serializers.KafkaAvroDeserializer"
+      properties:
+        schema:
+          registry:
+            url: http://schema-registry:8081
+        specific:
+          avro:
+            reader: "true"
+
+kafka:
+  topic:
+    verification: verification_topic
+avro:
+  topic:
+    name:
+      verification: verification_topic
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health, info
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka
