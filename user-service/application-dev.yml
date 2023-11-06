@@ -12,6 +12,22 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: none
+
+spring:
+  kafka:
+    bootstrap-servers: broker:29092
+    producer:
+      keySerializer: "org.apache.kafka.common.serialization.StringSerializer"
+      valueSerializer: "io.confluent.kafka.serializers.KafkaAvroSerializer"
+      properties:
+        schema:
+          registry:
+            url: http://schema-registry:8081
+avro:
+  topic:
+    name:
+      verification: verification_topic
+
 eureka:
   instance:
     prefer-ip-address: true
