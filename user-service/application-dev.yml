@@ -13,7 +13,6 @@ spring:
     hibernate:
       ddl-auto: none
 
-spring:
   kafka:
     bootstrap-servers: broker:29092
     producer:
