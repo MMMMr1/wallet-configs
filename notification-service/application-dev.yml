@@ -14,7 +14,7 @@ spring:
         specific:
           avro:
             reader: "true"  
-  mail:
+mail:
   host: smtp.mail.ru
   port: 465
   username: ${MAIL_USER}
