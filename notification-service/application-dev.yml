@@ -1,18 +1,3 @@
-mail:
-  host: smtp.mail.ru
-  port: 465
-  username: ${MAIL_USER}
-  password: ${MAIL_PASSWORD}
-  properties:
-    mail:
-      smtps:
-        starttls:
-          enable: true
-          required: true
-        auth: true
-        ssl: trust:smtp.mail.ru
-  protocol: smtps
-
 spring:
   application:
     name: mail-service
@@ -28,7 +13,30 @@ spring:
             url: http://schema-registry:8081
         specific:
           avro:
-            reader: "true"
+            reader: "true"  
+  mail:
+  host: smtp.mail.ru
+  port: 465
+  username: ${MAIL_USER}
+  password: ${MAIL_PASSWORD}
+  properties:
+    mail:
+      smtps:
+        starttls:
+          enable: true
+          required: true
+        auth: true
+        ssl: trust:smtp.mail.ru
+  protocol: smtps
+  
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka
 
 kafka:
   topic:
@@ -47,11 +55,4 @@ management:
       exposure:
         include: health, info
 
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://eureka-server:8761/eureka
+
