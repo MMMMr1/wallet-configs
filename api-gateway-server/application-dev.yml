@@ -56,4 +56,4 @@ springdoc:
     path: '/'
     urls:
       - name: user-service
-        url: http://user-service:8080/v3/api-docs
+        url: http://user-service/v3/api-docs
