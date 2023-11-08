@@ -48,14 +48,22 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://discovery-server:8761/eureka
-      
 springdoc:
   api-docs:
-    enabled: true
+    path: '/v3/api-docs'
   swagger-ui:
-    enabled: true
-    path: /swagger-ui.html
-    config-url: /v3/api-docs/swagger-config
+    path: '/'
+    operationsSorter: method
     urls:
-      - url: http://user-service:8080/v3/api-docs
-        name: user-service
+      - name: user-service
+        url: http://user-service:8080/v3/api-docs      
+# springdoc:
+#   api-docs:
+#     enabled: true
+#   swagger-ui:
+#     enabled: true
+#     path: /swagger-ui.html
+#     config-url: /v3/api-docs/swagger-config
+#     urls:
+#       - url: http://user-service:8080/v3/api-docs
+#         name: user-service
