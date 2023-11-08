@@ -19,10 +19,10 @@ spring:
             - PUT
             - POST
       routes:
-        - id: cors_route
-          uri: lb://user-service
-          predicates:
-            - Path=/api/v1/users/{segment},/api/v1/users 
+        # - id: cors_route
+        #   uri: lb://user-service
+        #   predicates:
+        #     - Path=/api/v1/users/{segment},/api/v1/users 
           # metadata:
           #   cors
           #     allowedOrigins: '*'
