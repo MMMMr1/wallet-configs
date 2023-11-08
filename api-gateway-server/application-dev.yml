@@ -47,10 +47,22 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://discovery-server:8761/eureka
+      defaultZone: http://discovery-server:8761/eureka 
 springdoc:
+  enable-native-support: true
+  api-docs:
+    enabled: true
   swagger-ui:
-    url: http://user-servce:8080   
+    enabled: true
+    path: /swagger-ui.html
+    config-url: /v3/api-docs/swagger-config
+    urls:
+      - url: /v3/api-docs
+        name: API Gateway Service
+        primaryName: API Gateway Service
+      - url: /user-service/v3/api-docs
+        name: User Service
+        primaryName: User Service
 # springdoc:
 #   api-docs:
 #     path: '/v3/api-docs'
