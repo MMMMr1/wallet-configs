@@ -10,20 +10,18 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
+      globalcors:
+        cors-configurations:
+          '[/**]': 
+            allowedMethods:
+            - GET
+            - PUT
+            - POST
       routes:
         - id: user-service
           uri: lb://user-service
           predicates:
-            - Path=/api/v1/users/{segment},/api/v1/users
-          metadata:
-            cors
-              allowedOrigins: '*'
-              allowedMethods:
-                - GET
-                - POST
-                - PUT
-              allowedHeaders: '*'
-              maxAge: 30
+            - Path=/api/v1/users/{segment},/api/v1/users 
           filters:
             - name: CircuitBreaker
               args:
