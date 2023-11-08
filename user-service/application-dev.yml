@@ -43,6 +43,7 @@ openapi:
     version: 1.0.0
     name: ${spring.application.name}
     description: "Responsible for managing users" #api gateway url
+    url: http://localhost/api/v1
 springdoc:
   api-docs:
     path: /user-service/v3/api-docs #these urls will used to load the swagger ui of this service by the api gateway
