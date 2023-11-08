@@ -52,7 +52,9 @@ eureka:
 springdoc:
   api-docs:
     path: '/v3/api-docs'
-  swagger-ui: 
+  swagger-ui:
+    path: '/'
+    operationsSorter: method
     urls:
       - name: user service
         url: http://user-service:8080/v3/api-docs
