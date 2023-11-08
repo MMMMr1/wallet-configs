@@ -10,19 +10,19 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
-      globalcors:
-        cors-configurations:
-          '[/**]': 
-            allowedOrigins: "*"
-            allowedMethods:
-            - GET
-            - PUT
-            - POST
+      # globalcors:
+      #   cors-configurations:
+      #     '[/**]': 
+      #       allowedOrigins: "*"
+      #       allowedMethods:
+      #       - GET
+      #       - PUT
+      #       - POST
       routes:
         - id: cors_route
-          uri: https://example.org
+          uri: lb://user-service
           predicates:
-            - Path=/service/**
+            - Path=/api/v1/users/{segment},/api/v1/users 
           metadata:
             cors
               allowedOrigins: '*'
