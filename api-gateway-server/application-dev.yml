@@ -15,6 +15,15 @@ spring:
           uri: lb://user-service
           predicates:
             - Path=/api/v1/users/{segment},/api/v1/users
+          metadata:
+            cors
+              allowedOrigins: '*'
+              allowedMethods:
+                - GET
+                - POST
+                - PUT
+              allowedHeaders: '*'
+              maxAge: 30
           filters:
             - name: CircuitBreaker
               args:
