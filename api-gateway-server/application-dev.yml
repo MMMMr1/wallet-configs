@@ -20,7 +20,7 @@ spring:
               args:
                 name: userServiceCommonCircuitBreaker 
                 fallbackUri: forward:/fallback/userServiceCommonFallback
-        - id: user-service
+        - id: user-service_swagger
           uri: lb://user-service
           predicates:
             - Path=/user-service/v3/api-docs
