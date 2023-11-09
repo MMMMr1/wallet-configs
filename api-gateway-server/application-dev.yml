@@ -1,84 +1,77 @@
-# spring:
-#   cloud:
-#     gateway:
-#       metrics:
-#         enabled: true
-#       actuator:
-#         verbose:
-#           enabled: true
-#       discovery:
-#         locator:
-#           enabled: true
-#           lower-case-service-id: true
-#       routes:
-#         - id: user-service
-#           uri: lb://user-service
-#           predicates:
-#             - Path=/api/v1/users/{segment},/api/v1/users 
-#           filters:
-#             - name: CircuitBreaker
-#               args:
-#                 name: userServiceCommonCircuitBreaker 
-#                 fallbackUri: forward:/fallback/userServiceCommonFallback 
+server:
+  port: 8072
+  error:
+    include-message: always
+spring:
+  application:
+    name: api-gateway-server
+  cloud:
+    gateway:
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials, RETAIN_UNIQUE
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowedMethods: "*"
+      metrics:
+        enabled: true
+      actuator:
+        verbose:
+          enabled: true
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/v1/users/{segment}, /api/v1/users
+          filters:
+            - RewritePath=/api/v1/(?<segment>.*), /${segment}
+            - name: CircuitBreaker
+              args:
+                name: userServiceCommonCircuitBreaker
+                fallbackUri: forward:/fallback/user-service-common-fallback
 
-# api-gateway-service:
-#   timeout-ms: 4000
-#   failure-rate-threshold: 50
-#   slow-call-rate-threshold: 50
-#   slow-call-duration-threshold: 50
-#   permitted-num-of-calls-in-half-open-state: 5
-#   sliding-window-size: 10
-#   min-number-of-calls: 10
-#   wait-duration-in-open-state: 10000 
+api-gateway-service:
+  timeout-ms: 4000
+  failure-rate-threshold: 50
+  slow-call-rate-threshold: 50
+  slow-call-duration-threshold: 50
+  permitted-num-of-calls-in-half-open-state: 5
+  sliding-window-size: 10
+  min-number-of-calls: 10
+  wait-duration-in-open-state: 10000
 
-# management:
-#   endpoint:
-#     gateway:
-#       enabled: true
-#   endpoints:
-#     web:
-#       exposure:
-#         include: "*"
+management:
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
-# eureka:
-#   instance:
-#     prefer-ip-address: true
-#   client:
-#     register-with-eureka: true
-#     fetch-registry: true
-#     service-url:
-#       defaultZone: http://discovery-server:8761/eureka 
-# springdoc:
-#   enable-native-support: true
-#   api-docs:
-#     enabled: true
-#   swagger-ui:
-#     enabled: true
-#     path: /swagger-ui.html
-#     config-url: /v3/api-docs/swagger-config
-#     urls:
-#       - url: /v3/api-docs
-#         name: API Gateway Service
-#         primaryName: API Gateway Service
-#       - url: /user-service/v3/api-docs
-#         name: User Service
-#         primaryName: User Service
-# # springdoc:
-# #   api-docs:
-# #     path: '/v3/api-docs'
-# #   swagger-ui:
-# #     path: '/'
-# #     operationsSorter: method
-# #     urls:
-# #       - name: user-service
-# #         url: /user-service/v3/api-docs
-# # springdoc:
-# #   api-docs:
-# #     enabled: true
-# #   swagger-ui:
-# #     enabled: true
-# #     path: /swagger-ui.html
-# #     config-url: /v3/api-docs/swagger-config
-# #     urls:
-# #       - url: /user-service/v3/api-docs
-# #         name: user-service
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://discovery-server:8761/eureka
+springdoc:
+  enable-native-support: true
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    config-url: /v3/api-docs/swagger-config
+    urls:
+      - url: /user-service/v3/api-docs
+        name: User Service
+        primaryName: User Service
