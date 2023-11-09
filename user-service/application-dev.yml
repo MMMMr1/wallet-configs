@@ -1,4 +1,8 @@
 spring:
+  application:
+    name: user-service
+
+spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://database-user-service:5432/postgres
@@ -35,9 +39,6 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://discovery-server:8761/eureka
-# server:
-#  servlet:
-#    context-path: /
 openapi:
   service:
     version: 1.0.0
@@ -49,3 +50,11 @@ springdoc:
     path: /user-service/v3/api-docs #these urls will used to load the swagger ui of this service by the api gateway
   swagger-ui:
     path: /user-service/swagger-ui.html
+
+---
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
