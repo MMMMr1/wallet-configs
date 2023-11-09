@@ -2,7 +2,6 @@ spring:
   application:
     name: user-service
 
-spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://database-user-service:5432/postgres
