@@ -35,9 +35,9 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://discovery-server:8761/eureka
-server:
- servlet:
-   context-path: /
+# server:
+#  servlet:
+#    context-path: /
 openapi:
   service:
     version: 1.0.0
