@@ -24,17 +24,17 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
-      routes:
-        - id: user-service
-          uri: lb://user-service
-          predicates:
-            - Path=/api/v1/users/{segment}, /api/v1/users
-          filters: 
-            - RewritePath=/api/v1/(?<segment>.*), /${segment}
-            - name: CircuitBreaker
-              args:
-                name: userServiceCommonCircuitBreaker
-                fallbackUri: forward:/fallback/user-service-common-fallback
+      # routes:
+      #   - id: user-service
+      #     uri: lb://user-service
+      #     predicates:
+      #       - Path=/api/v1/users/{segment}, /api/v1/users
+      #     filters: 
+      #       - RewritePath=/api/v1/(?<segment>.*), /${segment}
+      #       - name: CircuitBreaker
+      #         args:
+      #           name: userServiceCommonCircuitBreaker
+      #           fallbackUri: forward:/fallback/user-service-common-fallback
 
 api-gateway-service:
   timeout-ms: 4000
