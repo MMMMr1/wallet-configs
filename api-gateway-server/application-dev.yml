@@ -29,8 +29,7 @@ spring:
           uri: lb://user-service
           predicates:
             - Path=/api/v1/users/{segment}, /api/v1/users
-          filters:
-            - AddRequestHeader=Is-Proxy-Request,true
+          filters: 
             - RewritePath=/api/v1/(?<segment>.*), /${segment}
             - name: CircuitBreaker
               args:
