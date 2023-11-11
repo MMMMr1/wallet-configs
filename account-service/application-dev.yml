@@ -38,17 +38,17 @@ eureka:
     fetch-registry: true
     service-url:
       defaultZone: http://discovery-server:8761/eureka
-#openapi:
-#  service:
-#    version: 1.0.0
-#    name: ${spring.application.name}
-#    description: "Responsible for managing users" #api gateway url
-#    url: http://localhost:8072
-#springdoc:
-#  api-docs:
-#    path: /user-service/v3/api-docs #these urls will used to load the swagger ui of this service by the api gateway
-#  swagger-ui:
-#    path: /user-service/swagger-ui.html
+openapi:
+ service:
+   version: 1.0.0
+   name: ${spring.application.name}
+   description: "Responsible for managing accounts" #api gateway url
+   url: http://localhost:8072
+springdoc:
+ api-docs:
+   path: /account-service/v3/api-docs #these urls will used to load the swagger ui of this service by the api gateway
+ swagger-ui:
+   path: /account-service/swagger-ui.html
 
 ---
 
