@@ -49,7 +49,11 @@ springdoc:
     path: /user-service/v3/api-docs #these urls will used to load the swagger ui of this service by the api gateway
   swagger-ui:
     path: /user-service/swagger-ui.html
-
+    
+feign:
+  client:
+    account-service:
+      name: account-service
 ---
 
 management:
