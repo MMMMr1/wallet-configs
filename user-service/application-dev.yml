@@ -51,6 +51,8 @@ springdoc:
     path: /user-service/swagger-ui.html
     
 feign:
+  circuitbreaker:
+    enabled: true  
   client:
     account-service:
       name: account-service
