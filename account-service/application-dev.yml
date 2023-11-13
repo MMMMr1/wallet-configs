@@ -15,21 +15,7 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: none
-
-#   kafka:
-#     bootstrap-servers: broker:29092
-#     producer:
-#       keySerializer: "org.apache.kafka.common.serialization.StringSerializer"
-#       valueSerializer: "io.confluent.kafka.serializers.KafkaAvroSerializer"
-#       properties:
-#         schema:
-#           registry:
-#             url: http://schema-registry:8081
-# avro:
-#   topic:
-#     name:
-#       verification: verification_topic
-
+      
 eureka:
   instance:
     prefer-ip-address: true
@@ -57,27 +43,3 @@ management:
     web:
       exposure:
         include: '*'
-#spring:
-#  application:
-#    name: user-service
-#  datasource:
-#    driver-class-name: org.postgresql.Driver
-#    url: ${SPRING_DATASOURCE_URL_USER}
-#    username: ${POSTGRES_USER}
-#    password: ${POSTGRES_PASSWORD}
-#
-#  liquibase:
-#    enabled: true
-#
-#  jpa:
-#    show-sql: true
-#    hibernate:
-#      ddl-auto: none
-#eureka:
-#  instance:
-#    prefer-ip-address: true
-#  client:
-#    register-with-eureka: true
-#    fetch-registry: true
-#    service-url:
-#      defaultZone: http://discovery-server:8761/eureka
