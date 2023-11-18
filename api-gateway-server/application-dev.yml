@@ -67,3 +67,6 @@ springdoc:
       - url: /account-service/v3/api-docs
         name: Account Service
         primaryName: Account Service
+      - url: /money-transfer-service/v3/api-docs
+        name: Money Transfer Service
+        primaryName: Money Transfer Service
