@@ -18,7 +18,7 @@ spring:
   kafka:
     bootstrap-servers: broker:29092
     producer:
-      keySerializer: "org.apache.kafka.common.serialization.UUIDSerializer"
+      keySerializer: "org.apache.kafka.common.serialization.StringSerializer"
       valueSerializer: "io.confluent.kafka.serializers.KafkaAvroSerializer"
       properties:
         schema:
@@ -26,7 +26,7 @@ spring:
             url: http://schema-registry:8081
     consumer:
       group-id: client-account-service-group
-      keyDeserializer: "org.apache.kafka.common.serialization.UUIDDeserializer"
+      keyDeserializer: "org.apache.kafka.common.serialization.StringDeserializer"
       valueDeserializer: "io.confluent.kafka.serializers.KafkaAvroDeserializer"
       properties:
         schema:
