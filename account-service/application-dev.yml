@@ -45,11 +45,6 @@ avro:
       debit_operation: debit_operation_topic
       credit_operation: credit_operation_topic
       internal_operation: internal_operation_topic
-
-avro:
-  topic:
-    name:
-      transaction: transaction_topic
       
 eureka:
   instance:
