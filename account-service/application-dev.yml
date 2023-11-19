@@ -25,7 +25,7 @@ spring:
           registry:
             url: http://schema-registry:8081
     consumer:
-      group-id: client-mail-service-group
+      group-id: client-account-service-group
       keyDeserializer: "org.apache.kafka.common.serialization.UUIDDeserializer"
       valueDeserializer: "io.confluent.kafka.serializers.KafkaAvroDeserializer"
       properties:
