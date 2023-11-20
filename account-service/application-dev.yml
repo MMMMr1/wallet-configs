@@ -37,18 +37,15 @@ spring:
             reader: "true"
 kafka:
   topic:
-    transaction: transaction_topic 
-    debit_operation: debit_operation_topic
-    credit_operation: credit_operation_topic
-    internal_operation: internal_operation_topic
-    
+      transaction: transaction_broker
+      transaction: transaction_broker
+      transfer: transfer_broker
 avro:
   topic:
     name:
-      transaction: transaction_topic
-      debit_operation: debit_operation_topic
-      credit_operation: credit_operation_topic
-      internal_operation: internal_operation_topic
+      transaction: transaction_broker
+      transaction: transaction_broker
+      transfer: transfer_broker
       
 eureka:
   instance:
