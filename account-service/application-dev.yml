@@ -36,14 +36,12 @@ spring:
           avro:
             reader: "true"
 kafka:
-  topic:
-      transaction: transaction_broker
+  topic: 
       transaction: transaction_broker
       transfer: transfer_broker
 avro:
   topic:
-    name:
-      transaction: transaction_broker
+    name: 
       transaction: transaction_broker
       transfer: transfer_broker
       
