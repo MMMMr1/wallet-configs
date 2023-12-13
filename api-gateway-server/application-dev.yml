@@ -24,7 +24,7 @@ spring:
         locator:
           enabled: true
           lower-case-service-id: true
-          
+ 
 api-gateway-service:
   timeout-ms: 4000
   failure-rate-threshold: 50
@@ -34,6 +34,8 @@ api-gateway-service:
   sliding-window-size: 10
   min-number-of-calls: 10
   wait-duration-in-open-state: 10000
+  user-service-uri: lb://user-service
+  account-service-uri: lb://account-service
 
 management:
   endpoint:
