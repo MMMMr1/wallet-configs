@@ -67,6 +67,9 @@ openapi:
    name: ${spring.application.name}
    description: "Responsible for managing accounts" #api gateway url
    url: http://localhost:8072
+ oAuthFlow:
+  tokenUrl: http://localhost:8080/auth/realms/wallet/protocol/openid-connect/token
+  
 springdoc:
  api-docs:
    path: /account-service/v3/api-docs #these urls will used to load the swagger ui of this service by the api gateway
