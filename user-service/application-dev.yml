@@ -1,12 +1,7 @@
 spring:
   application:
     name: user-service
-  spring:
-    security:
-      oauth2:
-        resourceserver:
-          jwt:
-            jwk-set-uri: http://localhost:8080/auth/realms/wallet-demo-realm/protocol/openid-connect/certs
+    
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://database-user-service:5432/postgres
@@ -20,6 +15,14 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: none
+      
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://keycloak:8080/auth/realms/wallet
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+          
   cloud:
     openfeign:
       circuitbreaker:
