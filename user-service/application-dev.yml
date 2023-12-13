@@ -39,9 +39,6 @@ spring:
 #     name:
 #       verification: verification_topic
 
-  oAuthFlow:
-    tokenUrl: http://localhost:8080/auth/realms/wallet/protocol/openid-connect/token
-
 keycloak:
   auth-server-url: http://keycloak:8080
   realm: wallet
@@ -64,6 +61,8 @@ openapi:
     name: ${spring.application.name}
     description: "Responsible for managing users" #api gateway url
     url: http://localhost:8072
+  oAuthFlow:
+    tokenUrl: http://localhost:8080/auth/realms/wallet/protocol/openid-connect/token
     
 springdoc:
   api-docs:
